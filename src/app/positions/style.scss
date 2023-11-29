@@ -1,0 +1,31 @@
+.positions-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.sidebar-container {
+  width: 296px;
+  height: 616px;
+}
+
+.cards-container {
+  display: block;
+  height: 100%;
+  row-gap: 8px;
+  overflow: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.test {
+  width: 100px;
+  height: 100px;
+  background-color: #fff;
+}
+
+.cards-button {
+  width: 100%;
+}

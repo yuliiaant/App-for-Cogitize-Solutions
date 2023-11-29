@@ -1,0 +1,65 @@
+@import "../../variables.scss";
+
+.card {
+  background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  column-gap: 16px;
+  margin-bottom: 8px;
+
+  width: 296px;
+  height: 80px;
+  padding-inline: 16px;
+
+  border-radius: 7px;
+  border: 2px solid $background-secondary;
+  background-color: $background-secondary;
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+  }
+
+  &__container {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__title {
+    color: $white-text;
+    font-size: 14px;
+
+    &--price {
+      color: $gray-secondary;
+    }
+  }
+
+  &__secondary {
+    width: fit-content;
+    font-size: 12px;
+    color: $gray-secondary;
+    
+  }
+
+  &--selected {
+    border: 2px solid $violet;
+  }
+}
+
+.price {
+  color: $yellow;
+  font-weight: 700;
+}

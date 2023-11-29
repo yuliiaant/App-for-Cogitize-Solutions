@@ -1,0 +1,105 @@
+@import "../../variables.scss";
+
+.nav {
+  &__list {
+    display: flex;
+    flex-direction: row;
+    overflow: initial;
+  }
+
+  &__item {
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 14px;
+    color: $gray-text;
+    width: 243px;
+    height: 48px;
+
+    border: 2px solid $main-window-border;
+    background-color: $main-window-color;
+
+    position: relative;
+
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      top: -1;
+      height: 100%;
+      background-color: $main-window-color;
+    }
+
+    // &:before {
+    //   width: 20px;
+    //   height: 48px;
+    //   right: -15px;
+    //   border-top: 2px solid $main-window-border;
+    //   border-left: 2px solid $main-window-border;
+    //   border-bottom: 2px solid $main-window-border;;
+    //   border-top-left-radius: 8px;
+    //   z-index: 2;
+    // }
+
+    &:after {
+      width: 20px;
+      height: 48px;
+      right: -15px;
+      border-top: 2px solid $main-window-border;
+      border-right: 2px solid $main-window-border;
+      border-bottom: 2px solid $main-window-border;
+      border-top-right-radius: 8px;
+      z-index: 1;
+    }
+
+    &--active {
+      z-index: 3;
+      background-color: $main-window-color;
+      border-top-right-radius: 8px;
+      border-top-left-radius: 8px;
+      border-bottom-color: $main-window-color;
+      color: $violet;
+      background: linear-gradient(rgb(45, 45, 65), $main-window-color);
+
+      &:before {
+        width: 20px;
+        height: 48px;
+        left: -2px;
+        border-top: 2px solid $main-window-border;
+        border-left: 2px solid $main-window-border;
+        border-bottom: 2px solid $main-window-border;
+        border-top-left-radius: 8px;
+        z-index: 3;
+        border-bottom-color: $main-window-color;
+        background: linear-gradient(rgb(45, 45, 65), $main-window-color);
+      }
+
+      &:before:not(:first-child) {
+        left: -15px;
+      }
+
+      &:after {
+        width: 20px;
+        height: 48px;
+        right: -15px;
+        border-top: 2px solid $main-window-border;
+        border-right: 2px solid $main-window-border;
+        border-bottom: 2px solid $main-window-border;
+        border-top-right-radius: 8px;
+        z-index: 3;
+        border-bottom-color: $main-window-color;
+        background: linear-gradient(rgb(45, 45, 65), $main-window-color);
+      }
+    }
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+}

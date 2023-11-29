@@ -1,0 +1,31 @@
+@import "./variables.scss";
+
+.body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient($background, $background),
+    url("../../public/background.png");
+}
+
+.main-window {
+  width: 1034px;
+  height: 836px;
+  padding: 24px 25px 20px;
+  background-color: $main-window-color;
+  border-radius: 7px;
+  border: 2px solid $main-window-border;
+}
+
+.content {
+  width: 985px;
+  height: 747px;
+
+  padding: 24px 40px 40px;
+
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border: 2px solid $main-window-border;
+  border-top: 0;
+}
