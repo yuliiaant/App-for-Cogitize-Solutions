@@ -154,6 +154,9 @@ export const cardsSlice = createSlice({
     selectedEditCard: null,
   },
   reducers: {
+    setCards: (state, action) => {
+      state.cards = action.payload;
+    },
     addCard: (state) => {
       const newCard = {
         id: v4(),
@@ -205,6 +208,7 @@ export const cardsSlice = createSlice({
 });
 
 export const {
+  setCards,
   addCard,
   updateInput,
   editCard,
