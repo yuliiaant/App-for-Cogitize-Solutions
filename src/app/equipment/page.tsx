@@ -1,5 +1,5 @@
 export default function Equipment() {
   return (
-    <h1>Equipment</h1>
+    <h1></h1>
   );
 }

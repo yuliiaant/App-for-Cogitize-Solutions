@@ -7,6 +7,7 @@ import classNames from "classnames";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import {
+  editCard,
   updateCard,
 } from "@/lib/features/positions/positionsSlice";
 
@@ -50,6 +51,7 @@ export const PositionForm: React.FC<Props> = ({}) => {
       return;
     }
       dispatch(updateCard(tempPosition));
+      dispatch(editCard(null));
       // @ts-ignore
       seTempPosition(null);
   };

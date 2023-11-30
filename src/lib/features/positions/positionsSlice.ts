@@ -181,7 +181,9 @@ export const cardsSlice = createSlice({
     },
     editCard: (state, action) => {
       const currentCard = action.payload
-      state.inputTitleValue = currentCard.name;
+      if (currentCard) {
+        state.inputTitleValue = currentCard.name;
+      }
 
       state.selectedEditCard = currentCard;
     },

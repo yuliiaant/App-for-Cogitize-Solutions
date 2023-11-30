@@ -13,4 +13,14 @@
 
   box-shadow: 0px -50px 20px 0px $background, 0px 4px 40px 0px rgba(104, 102, 234, 0.24);
   border: 2px solid $violet-border;
+
+  &:hover {
+    background-color: $violet-hover;
+    transition: background-color 0.2s linear;
+  }
+
+  &:active {
+    background-color: $violet-active;
+    // transition: background-color 0.2s linear;
+  }
 }
