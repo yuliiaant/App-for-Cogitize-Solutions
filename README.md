@@ -1,7 +1,7 @@
 ## App for Cogitize Solutions built with Nextjs
 
 ### Design preview
-![Design preview](/next-tt/public/design.png)
+![Design preview](https://imgur.com/ehMHxoV)
 
 ## The challenge
 
