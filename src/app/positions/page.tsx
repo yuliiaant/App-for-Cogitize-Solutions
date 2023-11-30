@@ -28,13 +28,10 @@ export default function Positions() {
     dispatch(updateInput(""));
   };
 
-  const handleOndragEnd = (result) => {
-    // Avoiding the error when moving the items out of their droppable area.
+  const handleOndragEnd = (result: { destination: { index: number; }; source: { index: number; }; }) => {
     if (!result.destination) return;
     const items = structuredClone(cards);
-    //Retrieving the item from its previous position
     const [reorderedItem] = items.splice(result.source.index, 1);
-    //Drop the item at its new postition
     items.splice(result.destination.index, 0, reorderedItem);
     items.forEach((item) => dispatch(setCards(items)));
   };
@@ -56,7 +53,7 @@ export default function Positions() {
                       <PositionInput setIsNewCardShown={setIsNewCardShown} />
                     )}
                     {cards.map((card: Position, index) => (
-                      
+
                       <PositionCard
                         key={card?.id}
                         card={card}
