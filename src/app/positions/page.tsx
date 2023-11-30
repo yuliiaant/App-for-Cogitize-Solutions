@@ -27,7 +27,7 @@ export default function Positions() {
     setIsNewCardShown(true);
     dispatch(updateInput(""));
   };
-    // @ts-ignore
+  // @ts-ignore
   const handleOndragEnd = (result) => {
     if (!result.destination) return;
     const items = structuredClone(cards);
@@ -53,7 +53,6 @@ export default function Positions() {
                       <PositionInput setIsNewCardShown={setIsNewCardShown} />
                     )}
                     {cards.map((card: Position, index) => (
-
                       <PositionCard
                         key={card?.id}
                         card={card}

@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useState } from "react";
+import React from "react";
 import "./PositionCard.scss";
 import Image from "next/image";
 import Dots from "../../../../public/dots.svg";
@@ -15,7 +15,11 @@ type Props = {
   index: number;
 };
 
-export const PositionCard: React.FC<Props> = ({ card, setIsNewCardShown, index }) => {
+export const PositionCard: React.FC<Props> = ({
+  card,
+  setIsNewCardShown,
+  index,
+}) => {
   const selected = useSelector(
     (state: RootState) => state.card.selectedEditCard
   );
@@ -47,7 +51,9 @@ export const PositionCard: React.FC<Props> = ({ card, setIsNewCardShown, index }
                   <span className="price">{`$${card?.price} `}</span>/ час
                 </div>
               </div>
-              <div className="card__secondary">{`${card?.tasks} заданий`}</div>
+              <div className="card__secondary">
+                {card.level >= 10 ? `${card?.tasks} заданий` : "от 10 lvl"}
+              </div>
             </div>
           </div>
         );

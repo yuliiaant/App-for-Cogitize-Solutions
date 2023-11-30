@@ -6,14 +6,9 @@ import { checkboxNames } from "@/app/utils/constants";
 import classNames from "classnames";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import {
-  editCard,
-  updateCard,
-} from "@/lib/features/positions/positionsSlice";
+import { editCard, updateCard } from "@/lib/features/positions/positionsSlice";
 
-type Props = {};
-
-export const PositionForm: React.FC<Props> = ({}) => {
+export const PositionForm: React.FC = () => {
   // @ts-ignore
   const [tempPosition, seTempPosition] = useState<Position>(null);
   const dispatch = useDispatch();
@@ -42,7 +37,7 @@ export const PositionForm: React.FC<Props> = ({}) => {
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    seTempPosition((prev) => ({...prev, name: event.target.value}))
+    seTempPosition((prev) => ({ ...prev, name: event.target.value }));
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -50,12 +45,11 @@ export const PositionForm: React.FC<Props> = ({}) => {
     if (!tempPosition) {
       return;
     }
-      dispatch(updateCard(tempPosition));
-      dispatch(editCard(null));
-      // @ts-ignore
-      seTempPosition(null);
+    dispatch(updateCard(tempPosition));
+    dispatch(editCard(null));
+    // @ts-ignore
+    seTempPosition(null);
   };
-
 
   return (
     <form className="form" onSubmit={(event) => handleSubmit(event)}>
@@ -64,7 +58,7 @@ export const PositionForm: React.FC<Props> = ({}) => {
         <input
           type="text"
           className="form__input--text"
-          value={tempPosition?.name || ''}
+          value={tempPosition?.name || ""}
           onChange={(event) => handleChange(event)}
           disabled={!tempPosition}
         />
@@ -81,7 +75,7 @@ export const PositionForm: React.FC<Props> = ({}) => {
                     type="checkbox"
                     className={classNames("checkbox", {
                       "checkbox--active":
-                      tempPosition?.duties[name as keyof Duties],
+                        tempPosition?.duties[name as keyof Duties],
                     })}
                     // @ts-ignore
                     onClick={(event) => handleCheckboxClick(event, name)}
@@ -98,7 +92,11 @@ export const PositionForm: React.FC<Props> = ({}) => {
           ))}
         </div>
       </div>
-      <Button title={"Сохранить"} handleSubmit={handleSubmit} tempPosition={tempPosition} />
+      <Button
+        title={"Сохранить"}
+        handleSubmit={handleSubmit}
+        tempPosition={tempPosition}
+      />
     </form>
   );
 };

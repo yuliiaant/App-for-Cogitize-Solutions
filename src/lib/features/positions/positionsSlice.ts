@@ -183,7 +183,7 @@ export const cardsSlice = createSlice({
       state.selectedEditCard = null;
     },
     editCard: (state, action) => {
-      const currentCard = action.payload
+      const currentCard = action.payload;
       if (currentCard) {
         state.inputTitleValue = currentCard.name;
       }
@@ -195,24 +195,19 @@ export const cardsSlice = createSlice({
     },
     updateCard: (state, action) => {
       const updated = state.cards.map((card) => {
-        const newDuties = { ...action.payload.duties }
+        const newDuties = { ...action.payload.duties };
         if (card.id === action.payload.id) {
-          return { ...action.payload }
+          return { ...action.payload };
         }
         return card;
       });
 
       state.cards = updated;
     },
-  }
+  },
 });
 
-export const {
-  setCards,
-  addCard,
-  updateInput,
-  editCard,
-  updateCard,
-} = cardsSlice.actions;
+export const { setCards, addCard, updateInput, editCard, updateCard } =
+  cardsSlice.actions;
 
 export default cardsSlice.reducer;

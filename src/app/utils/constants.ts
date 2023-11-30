@@ -1,24 +1,5 @@
 import { Position } from "./types";
 
-export const initialCard = {
-  id: "",
-  name: "",
-  level: 0,
-  price: 0,
-  tasks: 0,
-  duties: {
-    sellProducts: false,
-    setPrices: false,
-    viewAnalytics: false,
-    duel: false,
-    submitClaims: false,
-    purchaseMaterials: false,
-    assignWorkers: false,
-    assignPositions: false,
-    kickOutFromTheGang: false,
-  },
-};
-
 export const initialDuties = {
   sellProducts: false,
   setPrices: false,
