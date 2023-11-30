@@ -57,6 +57,10 @@
   &--selected {
     border: 2px solid $violet;
   }
+
+  &:active {
+    box-shadow: 4px 8px 40px 0px rgba(0, 0, 0, 0.40);
+  }
 }
 
 .price {
