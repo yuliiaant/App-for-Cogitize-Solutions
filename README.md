@@ -1,5 +1,7 @@
 ## App for Cogitize Solutions built with Nextjs
 
+## [DEMO](https://test-task-next-eight.vercel.app/)
+
 ### Design preview
 ![Design preview](https://i.imgur.com/ehMHxoV.png)
 
