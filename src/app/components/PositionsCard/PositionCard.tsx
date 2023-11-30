@@ -13,12 +13,14 @@ type Props = {
   card: Position;
   setIsNewCardShown: (arg: boolean) => void;
   index: number;
+  tempPosition: Position | null;
 };
 
 export const PositionCard: React.FC<Props> = ({
   card,
   setIsNewCardShown,
   index,
+  tempPosition,
 }) => {
   const selected = useSelector(
     (state: RootState) => state.card.selectedEditCard
@@ -36,7 +38,7 @@ export const PositionCard: React.FC<Props> = ({
         return (
           <div
             className={classNames("card", {
-              "card--selected": card?.id === selected?.id,
+              "card--selected": card?.id === tempPosition?.id,
             })}
             onClick={handleClick}
             {...provided.draggableProps}

@@ -15,6 +15,8 @@ import { DragDropContext, Droppable } from "@hello-pangea/dnd";
 export default function Positions() {
   const [isNewCardShown, setIsNewCardShown] = useState(false);
   const [isBrowser, setIsBrowser] = useState(false);
+  // @ts-ignore
+  const [tempPosition, seTempPosition] = useState<Position>(null);
 
   useEffect(() => {
     setIsBrowser(process.browser);
@@ -25,6 +27,8 @@ export default function Positions() {
 
   const handleButtonClick = () => {
     setIsNewCardShown(true);
+    // @ts-ignore
+    seTempPosition(null);
     dispatch(updateInput(""));
   };
   // @ts-ignore
@@ -57,6 +61,7 @@ export default function Positions() {
                         key={card?.id}
                         card={card}
                         setIsNewCardShown={setIsNewCardShown}
+                        tempPosition={tempPosition}
                         index={index}
                       />
                     ))}
@@ -72,7 +77,7 @@ export default function Positions() {
                 <Button title={"Создать новую должность"} />
               </button>
             </div>
-            <PositionForm />
+            <PositionForm seTempPosition={seTempPosition} tempPosition={tempPosition} />
           </div>
         </DragDropContext>
       ) : null}

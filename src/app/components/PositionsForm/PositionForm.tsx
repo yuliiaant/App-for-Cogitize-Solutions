@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Dispatch, SetStateAction, useEffect } from "react";
 import "./PositionForm.scss";
 import { Button } from "../Button/Button";
 import { Duties, Position, RootState } from "@/app/utils/types";
@@ -8,9 +8,12 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { editCard, updateCard } from "@/lib/features/positions/positionsSlice";
 
-export const PositionForm: React.FC = () => {
-  // @ts-ignore
-  const [tempPosition, seTempPosition] = useState<Position>(null);
+type Props = {
+  tempPosition: Position | null;
+  seTempPosition: Dispatch<SetStateAction<Position>>;
+}
+
+export const PositionForm: React.FC<Props> = ({ tempPosition, seTempPosition }) => {
   const dispatch = useDispatch();
   const selected = useSelector(
     (state: RootState) => state.card.selectedEditCard

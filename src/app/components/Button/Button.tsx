@@ -7,6 +7,7 @@ type Props = {
   handleSubmit?: (event: React.FormEvent<HTMLFormElement>) => void,
   handleButtonClick?: () => void;
   tempPosition?: Position | null;
+  seTempPosition?: (arg: Position | null) => void;
 }
 
 export const Button: React.FC<Props> = ({ title, handleSubmit }) => {
