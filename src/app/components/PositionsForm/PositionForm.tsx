@@ -13,7 +13,8 @@ import {
 type Props = {};
 
 export const PositionForm: React.FC<Props> = ({}) => {
-  const [tempPosition, seTempPosition] = useState<Position | null>(null);
+  // @ts-ignore
+  const [tempPosition, seTempPosition] = useState<Position>(null);
   const dispatch = useDispatch();
   const selected = useSelector(
     (state: RootState) => state.card.selectedEditCard
@@ -49,6 +50,7 @@ export const PositionForm: React.FC<Props> = ({}) => {
       return;
     }
       dispatch(updateCard(tempPosition));
+      // @ts-ignore
       seTempPosition(null);
   };
 

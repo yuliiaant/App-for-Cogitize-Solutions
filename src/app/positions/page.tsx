@@ -34,7 +34,7 @@ export default function Positions() {
             )}
             {cards.map((card: Position) => (
               <PositionCard
-                key={card.id}
+                key={card?.id}
                 card={card}
                 setIsNewCardShown={setIsNewCardShown}
               />
