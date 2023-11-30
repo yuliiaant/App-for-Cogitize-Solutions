@@ -27,8 +27,8 @@ export default function Positions() {
     setIsNewCardShown(true);
     dispatch(updateInput(""));
   };
-
-  const handleOndragEnd = (result: { destination: { index: number; }; source: { index: number; }; }) => {
+    // @ts-ignore
+  const handleOndragEnd = (result) => {
     if (!result.destination) return;
     const items = structuredClone(cards);
     const [reorderedItem] = items.splice(result.source.index, 1);
