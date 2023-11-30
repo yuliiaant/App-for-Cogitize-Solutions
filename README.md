@@ -1,3 +1,39 @@
+## App for Cogitize Solutions built with Nextjs
+
+### Design preview
+![Design preview](/next-tt/public/design.png)
+
+## The challenge
+
+User should be able to:
+
+- Switching between tabs
+- Add new card to the list
+- Change card props and name
+- Drag and drop to reorder cards on the list
+
+## Key fecnologies
+
+- React.js
+- Next.js
+- Redux/Redux-Toolkit
+- TypeScript
+- LocalStorage
+- react-beautiful-dnd
+- SCSS/BEM
+- deploy: Vercel
+
+### Links
+
+- [Live Site URL](https://test-task-next-eight.vercel.app/)
+- [Task](https://docs.google.com/document/d/1J77raYlC4uKmPQ2AXvmS3fclrNFD130qM-L9tQnCoC8/edit?hl=ru)
+- [Design](https://www.figma.com/file/i0nWnfM1ejZvFZyvbEktlA/Cogitize-Solutions?node-id=0%3A1&mode=dev)
+
+## Author
+
+- [Linkedin](https://www.linkedin.com/in/yuliia-antonenko-7b6797213/)
+
+---------------
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
@@ -34,4 +70,3 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-# test-task-next
