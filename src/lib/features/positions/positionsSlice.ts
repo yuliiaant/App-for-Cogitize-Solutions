@@ -151,7 +151,7 @@ export const cardsSlice = createSlice({
       },
     ],
     inputTitleValue: "",
-    selectedEditCard: undefined,
+    selectedEditCard: null,
   },
   reducers: {
     addCard: (state) => {
@@ -174,43 +174,39 @@ export const cardsSlice = createSlice({
         },
       };
       if (state.inputTitleValue.length) {
-        state.cards.push(newCard);
+        state.cards.unshift(newCard);
       }
       state.inputTitleValue = "";
+      state.selectedEditCard = null;
     },
-    // deleteTask: (state, action) => {
-    //   const idxTask = state.cards.findIndex(
-    //     (task) => task.id === action.payload
-    //   );
-    //   state.cards.splice(idxTask, 1);
-    //   // state.todos.filter((task, i) => i !== action.payload);
-    // },
     editCard: (state, action) => {
-      const currentCard = {
-        id: action.payload.id,
-        name: action.payload.name,
-        level: action.payload.level,
-        price: action.payload.price,
-        tasks: action.payload.tasks,
-        duties: action.payload.duties,
-      };
+      const currentCard = action.payload
       state.inputTitleValue = currentCard.name;
 
       state.selectedEditCard = currentCard;
-
+    },
+    updateInput: (state, action) => {
+      state.inputTitleValue = action.payload;
     },
     updateCard: (state, action) => {
-      state.inputTitleValue = action.payload;
-    }
+      const updated = state.cards.map((card) => {
+        const newDuties = { ...action.payload.duties }
+        if (card.id === action.payload.id) {
+          return { ...action.payload }
+        }
+        return card;
+      });
+
+      state.cards = updated;
+    },
   }
 });
 
 export const {
   addCard,
-  // deleteCard,
-  updateCard,
+  updateInput,
   editCard,
-  // editAddCard
+  updateCard,
 } = cardsSlice.actions;
 
 export default cardsSlice.reducer;

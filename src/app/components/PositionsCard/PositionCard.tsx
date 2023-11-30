@@ -2,35 +2,33 @@ import React, { Dispatch, SetStateAction } from "react";
 import "./PositionCard.scss";
 import Image from "next/image";
 import Dots from "../../../../public/dots.svg";
-import { Position } from "@/app/utils/types";
+import { Position, RootState } from "@/app/utils/types";
 import classNames from "classnames";
+import { editCard } from "@/lib/features/positions/positionsSlice";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 
 type Props = {
   card: Position;
-  setSelectedCard: (arg: Position) => void;
-  selectedCard: Position | null;
-  setName: (arg: string) => void;
   setIsNewCardShown: (arg: boolean) => void;
 };
 
 export const PositionCard: React.FC<Props> = ({
   card,
-  setSelectedCard,
-  selectedCard,
-  setName,
   setIsNewCardShown,
 }) => {
+  const selected = useSelector((state: RootState) => state.card.selectedEditCard);
+  const dispatch = useDispatch();
   
   const handleClick = () => {
     setIsNewCardShown(false);
-    setSelectedCard(card);
-    setName(card?.name);
+    dispatch(editCard(card));
   };
 
   return (
     <button
-      className={classNames('card', {'card--selected': card?.id === selectedCard?.id})}
+      className={classNames('card', {'card--selected': card?.id === selected?.id})}
       onClick={handleClick}
     >
       <Image src={Dots} alt="dots" width={12} height={20} />

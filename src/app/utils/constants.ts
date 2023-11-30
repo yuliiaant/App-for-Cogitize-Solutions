@@ -16,7 +16,19 @@ export const initialCard = {
     assignWorkers: false,
     assignPositions: false,
     kickOutFromTheGang: false,
-  }
+  },
+};
+
+export const initialDuties = {
+  sellProducts: false,
+  setPrices: false,
+  viewAnalytics: false,
+  duel: false,
+  submitClaims: false,
+  purchaseMaterials: false,
+  assignWorkers: false,
+  assignPositions: false,
+  kickOutFromTheGang: false,
 };
 
 export const initialList: Position[] = [

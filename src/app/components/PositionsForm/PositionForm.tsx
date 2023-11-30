@@ -1,51 +1,56 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./PositionForm.scss";
 import { Button } from "../Button/Button";
-import { Duties, Position } from "@/app/utils/types";
-import { checkboxNames, initialCard } from "@/app/utils/constants";
+import { Duties, Position, RootState } from "@/app/utils/types";
+import { checkboxNames } from "@/app/utils/constants";
 import classNames from "classnames";
-
-type Props = {
-  name: string;
-  onNameChange: (arg: string) => void;
-  selectedCard: Position;
-  updateCard: (arg: Position) => void;
-  setSelectedCard: (arg: Position) => void;
-};
-
-export const PositionForm: React.FC<Props> = ({
-  name,
-  onNameChange,
-  selectedCard,
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import {
   updateCard,
-  setSelectedCard,
-}) => {
-  const [tempCard, setTempCard] = useState(initialCard);
+} from "@/lib/features/positions/positionsSlice";
 
-  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    onNameChange(event.target.value);
+type Props = {};
+
+export const PositionForm: React.FC<Props> = ({}) => {
+  const [tempPosition, seTempPosition] = useState<Position | null>(null);
+  const dispatch = useDispatch();
+  const selected = useSelector(
+    (state: RootState) => state.card.selectedEditCard
+  );
+
+  useEffect(() => {
+    if (!selected) return;
+    seTempPosition(selected);
+  }, [selected]);
+
+  const handleCheckboxClick = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    name: keyof Duties
+  ) => {
+    seTempPosition((prev) => {
+      return {
+        ...prev,
+        duties: {
+          ...prev?.duties,
+          [name]: event.target.checked,
+        },
+      };
+    });
+  };
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    seTempPosition((prev) => ({...prev, name: event.target.value}))
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const cardToUpdate = { ...selectedCard };
-
-    cardToUpdate.name = name;
-
-    updateCard(cardToUpdate);
-    onNameChange('');
-    setSelectedCard(initialCard);
+    event?.preventDefault();
+    if (!tempPosition) {
+      return;
+    }
+      dispatch(updateCard(tempPosition));
+      seTempPosition(null);
   };
-
-  const handleCheckboxClick = (name: keyof Duties) => {
-    const cardToUpdate = { ...selectedCard };
-
-    cardToUpdate.duties[name] = !cardToUpdate.duties[name];
-
-    setTempCard(cardToUpdate);
-
-    updateCard(cardToUpdate);
-  }
 
 
   return (
@@ -55,8 +60,9 @@ export const PositionForm: React.FC<Props> = ({
         <input
           type="text"
           className="form__input--text"
-          value={name || ""}
-          onChange={(event) => handleInputChange(event)}
+          value={tempPosition?.name || ''}
+          onChange={(event) => handleChange(event)}
+          disabled={!tempPosition}
         />
       </div>
       <div className="form__settings">
@@ -71,11 +77,14 @@ export const PositionForm: React.FC<Props> = ({
                     type="checkbox"
                     className={classNames("checkbox", {
                       "checkbox--active":
-                        selectedCard?.duties[name as keyof Duties]
-                        && !!selectedCard.id,
+                      tempPosition?.duties[name as keyof Duties],
                     })}
                     // @ts-ignore
-                    onClick={() => handleCheckboxClick(name)}
+                    onClick={(event) => handleCheckboxClick(event, name)}
+                    checked={
+                      tempPosition?.duties[name as keyof Duties] || false
+                    }
+                    disabled={!tempPosition}
                   />
                   {value}
                   <span className="checkmark"></span>
@@ -85,7 +94,7 @@ export const PositionForm: React.FC<Props> = ({
           ))}
         </div>
       </div>
-      <Button title={"Сохранить"} handleSubmit={handleSubmit} />
+      <Button title={"Сохранить"} handleSubmit={handleSubmit} tempPosition={tempPosition} />
     </form>
   );
 };
