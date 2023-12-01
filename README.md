@@ -14,7 +14,7 @@ User should be able to:
 - Change card props and name
 - Drag and drop to reorder cards on the list
 
-## Key fecnologies
+## Key tecnologies
 
 - React.js
 - Next.js
